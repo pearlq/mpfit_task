@@ -132,6 +132,10 @@
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <button type="submit" style="background: none; border: none; cursor: pointer;">❌</button>
                         </form>
+                        <form action="/product/info" method="get">
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <button type="submit" style="background: none; border: none; cursor: pointer;">Подробнее</button>
+                        </form>
                     </div>
                 </td>
                 <td>

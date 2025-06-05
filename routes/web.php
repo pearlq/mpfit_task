@@ -14,4 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\ProductController::class, 'getProductPage']);
-Route::post('/product/add', [\App\Http\Controllers\ProductController::class, 'addProduct']);
+
+Route::prefix('/product')->group(function () {
+    Route::post('/add', [\App\Http\Controllers\ProductController::class, 'addProduct']);
+
+    Route::get('/edit', [\App\Http\Controllers\ProductController::class, 'getEditProductPage']);
+    Route::post('/edit', [\App\Http\Controllers\ProductController::class, 'editProduct']);
+
+    Route::get('/info', [\App\Http\Controllers\ProductController::class, 'getInfoProductPage']);
+});
+
