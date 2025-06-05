@@ -69,6 +69,7 @@
     <h2>Обновить товар</h2>
     <form action="/product/edit" method="post">
         @csrf
+        @method('PATCH')
         <input type="hidden" name="id" value="{{ $product->id }}">
         <div class="form-group">
             <label for="name">Наименование</label>
