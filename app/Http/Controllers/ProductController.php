@@ -40,20 +40,36 @@ class ProductController extends Controller
     public function addProduct(AddProductRequest $request): Redirector|Application|RedirectResponse
     {
         try {
-            Product::create([
-                'name' => $request->get('name'),
-                'price' => $request->get('price'),
-                'category_id' => $request->get('category_id'),
-                'description' => $request->get('description'),
-            ]);
+            $product = Product::withTrashed()
+                ->where('name', $request->get('name'))
+                ->first();
 
+            if ($product and $product->trashed()) {
+                $product->restore();
+                $product->update([
+                    'category_id' => $request->get('category_id'),
+                    'price' => $request->get('price'),
+                    'description' => $request->get('description'),
+                ]);
+                $product->save();
+
+            } else {
+                Product::create([
+                    'name' => $request->get('name'),
+                    'price' => $request->get('price'),
+                    'category_id' => $request->get('category_id'),
+                    'description' => $request->get('description'),
+                ]);
+
+            }
             return redirect('/')->with('success', 'Товар успешно добавлен!');
         } catch (\Throwable $th) {
             return redirect('/')->with('error', 'Не удалось добавить товар');
         }
     }
 
-    public function editProduct(Request $request): Redirector|Application|RedirectResponse
+    public
+    function editProduct(Request $request): Redirector|Application|RedirectResponse
     {
         try {
             $product = Product::find($request->get('id'));
@@ -71,8 +87,16 @@ class ProductController extends Controller
         }
     }
 
-    public function deleteProduct()
+    public
+    function deleteProduct(Request $request)
     {
+        try {
+            $product = Product::find($request->get('id'));
+            $product->delete();
 
+            return redirect('/')->with('success', 'Товар успешно удален!');
+        } catch (\Throwable $th) {
+            return redirect('/')->with('error', 'Не удалось удалить товар');
+        }
     }
 }

@@ -22,5 +22,7 @@ Route::prefix('/product')->group(function () {
     Route::patch('/edit', [\App\Http\Controllers\ProductController::class, 'editProduct']);
 
     Route::get('/info', [\App\Http\Controllers\ProductController::class, 'getInfoProductPage']);
+
+    Route::delete('/delete', [\App\Http\Controllers\ProductController::class, 'deleteProduct']);
 });
 

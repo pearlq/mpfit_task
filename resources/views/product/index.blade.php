@@ -129,6 +129,8 @@
                             <button type="submit" style="background: none; border: none; cursor: pointer;">✏️</button>
                         </form>
                         <form action="/product/delete" method="post">
+                            @csrf
+                            @method('DELETE')
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <button type="submit" style="background: none; border: none; cursor: pointer;">❌</button>
                         </form>
