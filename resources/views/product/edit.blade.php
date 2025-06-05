@@ -67,7 +67,7 @@
 <body>
 <div class="form-container">
     <h2>Обновить товар</h2>
-    <form action="/product/update" method="post">
+    <form action="/product/edit" method="post">
         @csrf
         <input type="hidden" name="id" value="{{ $product->id }}">
         <div class="form-group">
