@@ -3,6 +3,19 @@
 <head>
     <title>Товары</title>
     <style>
+        header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
@@ -69,6 +82,12 @@
     </style>
 </head>
 <body>
+<header>
+    <nav>
+        <a href="/">Товары</a>
+        <a href="/order">Заказы</a>
+    </nav>
+</header>
 <div class="table-container">
     <h2>Заказ № {{ $order->id }}</h2>
     <a href="/">Вернуться на главную</a>

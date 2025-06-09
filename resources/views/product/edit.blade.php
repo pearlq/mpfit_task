@@ -3,6 +3,19 @@
 <head>
     <title>Обновить товар</title>
     <style>
+        header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f5f5;
@@ -65,6 +78,12 @@
     </style>
 </head>
 <body>
+<header>
+    <nav>
+        <a href="/">Товары</a>
+        <a href="/order">Заказы</a>
+    </nav>
+</header>
 <div class="form-container">
     <h2>Обновить товар</h2>
     <form action="/product/edit" method="post">
