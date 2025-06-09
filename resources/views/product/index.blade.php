@@ -115,6 +115,7 @@
         <th>Наименование</th>
         <th>Цена</th>
         <th>Категория</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -145,6 +146,12 @@
                 </td>
                 <td>
                     {{ $product->category->name }}
+                </td>
+                <td>
+                    <form action="/order/add" method="get">
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" style="background: none; border: none; cursor: pointer;">Добавить в заказ</button>
+                    </form>
                 </td>
             </tr>
         @endforeach

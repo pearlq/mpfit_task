@@ -26,3 +26,11 @@ Route::prefix('/product')->group(function () {
     Route::delete('/delete', [\App\Http\Controllers\ProductController::class, 'deleteProduct']);
 });
 
+Route::prefix('/order')->group(function () {
+    Route::get('/', [\App\Http\Controllers\OrderController::class, 'getOrderPage']);
+    Route::get('/add', [\App\Http\Controllers\OrderController::class, 'getAddToOrderPage']);
+    Route::post('/add', [\App\Http\Controllers\OrderController::class, 'addToOrder']);
+    Route::patch('/change/status/', [\App\Http\Controllers\OrderController::class, 'changeStatus']);
+    Route::get('/info', [\App\Http\Controllers\OrderController::class, 'getInfoOrderPage']);
+});
+

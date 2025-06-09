@@ -16,7 +16,8 @@ class Order extends Model
         'customer_comment',
         'status',
         'product_id',
-        'product_count'
+        'product_count',
+        'total_price'
     ];
 
     public function product(): BelongsTo

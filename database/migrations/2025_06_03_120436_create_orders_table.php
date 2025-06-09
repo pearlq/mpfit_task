@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('customer_full_name');
-            $table->enum('status', ['new', 'completed'])->default('new');
+            $table->enum('status', ['Новый', 'Выполнен'])->default('Новый');
+            $table->decimal('total_price', 10, 2);
             $table->text('customer_comment')->nullable();
             $table->unsignedBigInteger('product_id');
             $table->integer('product_count');
