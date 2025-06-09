@@ -30,10 +30,16 @@ class OrderController extends Controller
         return view('order.add_to_order', ['product' => $product]);
     }
 
-    public function getInfoOrderPage(Request $request)
+    public function getInfoOrderPage(Request $request): Factory|View|Application
     {
-        $order = Order::where('id', $request->get('id'))->first();
-        return view('order.edit', ['order' => $order]);
+        $order = Order::where('id', $request->get('order_id'))
+            ->with([
+                'product' => function ($query) {
+                    $query->withTrashed();
+                }
+            ])
+            ->first();
+        return view('order.info', ['order' => $order]);
     }
 
     public function addToOrder(AddToOrderRequest $request): Redirector|Application|RedirectResponse
@@ -57,7 +63,7 @@ class OrderController extends Controller
         }
     }
 
-    public function changeStatus(changeOrderStatusRequest $request)
+    public function changeStatus(changeOrderStatusRequest $request): Redirector|Application|RedirectResponse
     {
         try {
             $order = Order::find($request->get('id'));

@@ -122,7 +122,7 @@
                         </form>
                     </td>
                     <td>
-                        <form action="/order/get_by_id" method="get">
+                        <form action="/order/info" method="get">
                             <input type="hidden" name="order_id" value="{{ $order->id }}">
                             <button type="submit" style="background: none; border: none; cursor: pointer;">Подробнее</button>
                         </form>
