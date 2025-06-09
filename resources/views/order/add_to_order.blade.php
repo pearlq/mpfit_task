@@ -116,7 +116,7 @@
         </div>
         <div class="form-group">
             <label for="product_count">Количество:</label>
-            <input type="number" id="product_count" name="product_count" min="1">
+            <input type="number" id="product_count" name="product_count" min="1" max="100">
         </div>
         <div class="form-group">
             <label for="customer_full_name">Ф.И.О</label>
