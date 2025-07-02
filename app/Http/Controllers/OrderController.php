@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddToOrderRequest;
+use App\Http\Requests\ChangeOrderStatusRequest;
 use App\Http\Requests\сhangeOrderStatusRequest;
 use App\Models\Order;
 use App\Models\Product;
@@ -63,7 +64,7 @@ class OrderController extends Controller
         }
     }
 
-    public function changeStatus(сhangeOrderStatusRequest $request): Redirector|Application|RedirectResponse
+    public function changeStatus(ChangeOrderStatusRequest $request): Redirector|Application|RedirectResponse
     {
         try {
             $order = Order::find($request->get('id'));
